@@ -46,7 +46,11 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPasswrod(e.currentTarget.value)}
         />
-        <input type="submit" className="p-4 bg-green-400 rounded-md" />
+        <input
+          type="submit"
+          className="p-4 bg-green-400 rounded-md"
+          value="Sign up"
+        />
         <Link to="/sign-in">Already have an account? Sign in</Link>
       </form>
     </div>

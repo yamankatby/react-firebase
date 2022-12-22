@@ -1,34 +1,35 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 
-const SignIn = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPasswrod] = useState("");
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
 
-      if (!email || !password) {
+      if (!email) {
         return;
       }
 
-      signInWithEmailAndPassword(auth, email, password)
+      sendPasswordResetEmail(auth, email)
         .then(() => {
-          alert("hey, you have signed in ");
+          alert(
+            "We have sent you a reset password email. Check your inbox. It may take 5 min"
+          );
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    [email, password]
+    [email]
   );
 
   return (
     <div className="max-w-md mx-auto py-12">
-      <h1 className="text-2xl">Sign in</h1>
+      <h1 className="text-2xl">Forgot password</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
         <input
           type="email"
@@ -38,24 +39,14 @@ const SignIn = () => {
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
         <input
-          type="password"
-          placeholder="Enter your password"
-          className="p-4 bg-gray-100 rounded-md"
-          value={password}
-          onChange={(e) => setPasswrod(e.currentTarget.value)}
-        />
-        <Link to="/forgot-password" className="ml-auto">
-          Forgot password?
-        </Link>
-        <input
           type="submit"
+          value="Send reset password email"
           className="p-4 bg-pink-400 rounded-md"
-          value="Sign in"
         />
-        <Link to="/sign-up">Don't have an account? Sign up</Link>
+        <Link to="/sign-in">Back to sign in</Link>
       </form>
     </div>
   );
 };
 
-export default SignIn;
+export default ForgotPassword;
