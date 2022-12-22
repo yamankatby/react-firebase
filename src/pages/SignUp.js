@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 
 const SignUp = () => {
@@ -46,6 +47,7 @@ const SignUp = () => {
           onChange={(e) => setPasswrod(e.currentTarget.value)}
         />
         <input type="submit" className="p-4 bg-green-400 rounded-md" />
+        <Link to="/sign-in">Already have an account? Sign in</Link>
       </form>
     </div>
   );
