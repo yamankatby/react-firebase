@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth";
 import { useCallback } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Posts from "../components/Posts";
 import { auth } from "../firebase";
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
           Sign out
         </button>
       </div>
+      <Posts />
     </div>
   );
 };
