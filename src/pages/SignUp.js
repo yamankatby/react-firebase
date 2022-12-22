@@ -17,13 +17,9 @@ const SignUp = () => {
         return;
       }
 
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("you have sign up");
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      createUserWithEmailAndPassword(auth, email, password).catch((e) => {
+        console.log(e);
+      });
     },
     [email, password]
   );

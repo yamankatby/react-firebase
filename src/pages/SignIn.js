@@ -15,13 +15,9 @@ const SignIn = () => {
         return;
       }
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("hey, you have signed in ");
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      signInWithEmailAndPassword(auth, email, password).catch((e) => {
+        console.log(e);
+      });
     },
     [email, password]
   );
